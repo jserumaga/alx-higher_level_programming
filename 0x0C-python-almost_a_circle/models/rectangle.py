@@ -141,11 +141,11 @@ class Rectangle(Base):
         if args:
             for arg in args:
                 if i == 0:
-                    self.id
+                    self.id = arg
                 if i == 1:
-                    self.wid
+                    self.wid = arg
                 if i == 2:
-                    self.hei
+                    self.hei = arg
                 if i == 3:
                     self.x = arg
                 if i == 4:
