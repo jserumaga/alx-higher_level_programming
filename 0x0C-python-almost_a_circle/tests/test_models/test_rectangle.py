@@ -164,45 +164,43 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(str(self.r2), "[Rectangle] (2) 4/0 - 2/3")
 
     def test_update_args(self):
-                """Testing the udpate method with *args"""
-                        r = Rectangle(1, 1, 0, 0, 1)
-                                self.assertEqual(str(r), "[Rectangle] (1) 0/0 - 1/1")
-                                        r.update(89)
-                                                self.assertEqual(str(r), "[Rectangle] (89) 0/0 - 1/1")
-                                                        r.update(89, 2)
-                                                                self.assertEqual(str(r), "[Rectangle] (89) 0/0 - 2/1")
-                                                                        r.update(89, 2, 3)
-                                                                                self.assertEqual(str(r), "[Rectangle] (89) 0/0 - 2/3")
-                                                                                        r.update(89, 2, 3, 4)
-                                                                                                self.assertEqual(str(r), "[Rectangle] (89) 4/0 - 2/3")
-                                                                                                        r.update(89, 2, 3, 4, 5)
-                                                                                                                self.assertEqual(str(r), "[Rectangle] (89) 4/5 - 2/3")
+        """Testing the udpate method with *args"""
+        r = Rectangle(1, 1, 0, 0, 1)
+        self.assertEqual(str(r), "[Rectangle] (1) 0/0 - 1/1")
+        r.update(89)
+        self.assertEqual(str(r), "[Rectangle] (89) 0/0 - 1/1")
+        r.update(89, 2)
+        self.assertEqual(str(r), "[Rectangle] (89) 0/0 - 2/1")
+        r.update(89, 2, 3)
+        self.assertEqual(str(r), "[Rectangle] (89) 0/0 - 2/3")
+        r.update(89, 2, 3, 4)
+        self.assertEqual(str(r), "[Rectangle] (89) 4/0 - 2/3")
+        r.update(89, 2, 3, 4, 5)
+        self.assertEqual(str(r), "[Rectangle] (89) 4/5 - 2/3")
 
     def test_update_args_setter(self):
-                """tests that the update method uses setter with *args"""
-                        r = Rectangle(1, 1, 0, 0, 1)
-                                with self.assertRaisesRegex(TypeError, "width must be an integer"):
-                                                r.update(1, "hello")
-                                                        with self.assertRaisesRegex(TypeError, "height must be an integer"):
-                                                                        r.update(1, 1, "hello")
-                                                                                with self.assertRaisesRegex(TypeError, "x must be an integer"):
-                                                                                                r.update(1, 1, 1, "hello")
-                                                                                                        with self.assertRaisesRegex(TypeError, "y must be an integer"):
-                                                                                                                        r.update(1, 1, 1, 1, "hello")
-                                                                                                                                with self.assertRaisesRegex(ValueError, "width must be > 0"):
-                                                                                                                                                r.update(1, 0)
-                                                                                                                                                        with self.assertRaisesRegex(ValueError, "width must be > 0"):
-                                                                                                                                                                        r.update(1, -1)
-                                                                                                                                                                                with self.assertRaisesRegex(ValueError, "height must be > 0"):
-                                                                                                                                                                                                r.update(1, 1, 0)
-                                                                                                                                                                                                        with self.assertRaisesRegex(ValueError, "height must be > 0"):
-                                                                                                                                                                                                                        r.update(1, 1, -1)
-                                                                                                                                                                                                                                with self.assertRaisesRegex(ValueError, "x must be >= 0"):
-                                                                                                                                                                                                                                                r.update(1, 1, 1, -1)
-                                                                                                                                                                                                                                                        with self.assertRaisesRegex(ValueError, "y must be >= 0"):
-                                                                                                                                                                                                                                                                        r.update(1, 1, 1, 1, -1)
-
-
+        """tests that the update method uses setter with *args"""
+        r = Rectangle(1, 1, 0, 0, 1)
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            r.update(1, "hello")
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            r.update(1, 1, "hello")
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            r.update(1, 1, 1, "hello")
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            r.update(1, 1, 1, 1, "hello")
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            r.update(1, 0)
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            r.update(1, -1)
+        with self.assertRaisesRegex(ValueError, "height must be > 0"):
+            r.update(1, 1, 0)
+        with self.assertRaisesRegex(ValueError, "height must be > 0"):
+            r.update(1, 1, -1)
+        with self.assertRaisesRegex(ValueError, "x must be >= 0"):
+            r.update(1, 1, 1, -1)
+        with self.assertRaisesRegex(ValueError, "y must be >= 0"):
+            r.update(1, 1, 1, 1, -1)
 
     def update_too_many_args(self):
         """too many args for update"""
