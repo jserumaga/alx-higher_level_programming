@@ -1,5 +1,3 @@
-
-
 #!/usr/bin/node
 class Rectangle {
   constructor (w, h) {
@@ -7,4 +5,5 @@ class Rectangle {
     this.height = h;
   }
 }
+
 module.exports = Rectangle;
